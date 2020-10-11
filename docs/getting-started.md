@@ -69,9 +69,9 @@ ansible-playbook -i inventory/mycluster/hosts.yml remove-node.yml -b -v \
 --extra-vars "node=nodename,nodename2"
 ```
 
-If a node is completely unreachable by ssh, add `--extra-vars reset_nodes=no`
+If a node is completely unreachable by ssh, add `--extra-vars reset_nodes=false`
 to skip the node reset step. If one node is unavailable, but others you wish
-to remove are able to connect via SSH, you could set reset_nodes=no as a host
+to remove are able to connect via SSH, you could set `reset_nodes=false` as a host
 var in inventory.
 
 ## Connecting to Kubernetes
@@ -95,7 +95,7 @@ the Kubernetes [documentation](https://kubernetes.io/docs/tasks/access-applicati
 
 Supported version is kubernetes-dashboard v2.0.x :
 
-- Login options are : token/kubeconfig by default, basic can be enabled with `kube_basic_auth: true` inventory variable - not recommended because this requires ABAC api-server which is not tested by kubespray team
+- Login option : token/kubeconfig by default
 - Deployed by default in "kube-system" namespace, can be overridden with `dashboard_namespace: kubernetes-dashboard` in inventory,
 - Only serves over https
 
